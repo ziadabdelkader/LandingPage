@@ -1,13 +1,20 @@
-# Landing Page Project
+# Landing Page
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Features](#features)
+* [Images](#images)
 
-## Instructions
+## Features
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* As navigation is built dynamically, sections can be added and deleted from html file without affecting the navigation functionality.
 
-To get started, open `js/app.js` and start building out the app's functionality
+* Clicking any Item form navigation bar scrolls to the corresponding section.
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+* Styles are added to both sections and navigation items to indicate which section is in view.
+
+
+## Images
+![img_1.png](images/img_1.png)
+
+![img.png](images/img.png)
