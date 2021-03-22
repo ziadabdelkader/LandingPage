@@ -13,10 +13,6 @@
  *
  */
 
-/**
- * Define Global Variables
- *
- */
 
 const sections = document.querySelectorAll("section");
 const menuList = document.querySelector("#navbar__list");
@@ -24,11 +20,6 @@ let navigationItems;
 let activeSection = sections[0];
 let activeNavigationItem;
 
-/**
- * End Global Variables
- * Start Helper Functions
- *
- */
 
 function addNavigationMenuItems(){
     for(const section of sections){
@@ -44,7 +35,6 @@ function getNavigationItemFromSection(section){
     navigationItem.textContent = navigationItemName;
     navigationItem.dataset.sectionId = sectionId;
     navigationItem.classList.add("menu__link");
-    section.dataset.navigationItem = navigationItem.id;
     return navigationItem;
 }
 
@@ -57,9 +47,7 @@ function handlerForNavigationItemClicked(event){
 
 
 function isElementInViewport (element) {
-
     let rect = element.getBoundingClientRect();
-
     return (
         rect.top >= 0 &&
         rect.left >= 0 &&
@@ -98,36 +86,17 @@ function updateActiveNavigationItem(section){
     activeNavigationItem.classList.add("your-active-class");
 }
 
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
-
 // Build menu
 addNavigationMenuItems();
+
 // select all navigation items after built
 navigationItems = document.querySelectorAll(".menu__link");
+
 // mark active item
-updateActiveNavigationItem(activeSection)
+updateActiveNavigationItem(activeSection);
 
 // Scroll to section on link click
 menuList.addEventListener('click',handlerForNavigationItemClicked);
 
 // Set sections as active
-document.addEventListener("scroll",scrollWindowHandler)
+document.addEventListener("scroll",scrollWindowHandler);
