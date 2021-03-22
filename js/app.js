@@ -21,14 +21,14 @@ let activeSection;
 let activeNavigationItem;
 
 
-function addNavigationMenuItems(){
-    for(const section of sections){
+function addNavigationMenuItems() {
+    for (const section of sections) {
         const navigationItem = getNavigationItemFromSection(section);
         menuList.append(navigationItem)
     }
 }
 
-function getNavigationItemFromSection(section){
+function getNavigationItemFromSection(section) {
     const sectionId = section.id;
     const navigationItemName = section.dataset.nav;
     const navigationItem = document.createElement('li');
@@ -38,15 +38,15 @@ function getNavigationItemFromSection(section){
     return navigationItem;
 }
 
-function handlerForNavigationItemClicked(event){
+function navigationItemClickedHandler(event) {
     const navigationItem = event.target;
     const sectionId = navigationItem.dataset.sectionId;
     const section = document.getElementById(sectionId);
-    section.scrollIntoView({behavior: "smooth",block: 'start'});
+    section.scrollIntoView({behavior: "smooth", block: 'start'});
 }
 
 
-function isElementInViewport (element) {
+function isElementInViewport(element) {
     let rect = element.getBoundingClientRect();
     return (
         rect.top >= 0 &&
@@ -56,18 +56,18 @@ function isElementInViewport (element) {
     );
 }
 
-function getActiveSection(){
-    for(const section of sections){
-        if(isElementInViewport(section))
+function getActiveSection() {
+    for (const section of sections) {
+        if (isElementInViewport(section))
             return section;
     }
     return activeSection;
 }
 
-function scrollWindowHandler(){
+function scrollWindowHandler() {
     const newActiveSection = getActiveSection();
-    if(newActiveSection && newActiveSection !== activeSection){
-        if(activeSection)
+    if (newActiveSection && newActiveSection !== activeSection) {
+        if (activeSection)
             activeSection.classList.remove("your-active-class");
         newActiveSection.classList.add("your-active-class");
         activeSection = newActiveSection;
@@ -75,15 +75,15 @@ function scrollWindowHandler(){
     }
 }
 
-function updateActiveNavigationItem(section){
-    if(activeNavigationItem){
+function updateActiveNavigationItem(section) {
+    if (activeNavigationItem)
         activeNavigationItem.classList.remove("your-active-class");
-    }
+
     for (const navigationItem of navigationItems) {
-        if(navigationItem.dataset.sectionId ===  section.id){
+        if (navigationItem.dataset.sectionId === section.id)
             activeNavigationItem = navigationItem;
-        }
     }
+
     activeNavigationItem.classList.add("your-active-class");
 }
 
@@ -94,7 +94,7 @@ addNavigationMenuItems();
 navigationItems = document.querySelectorAll(".menu__link");
 
 // Scroll to section on link click
-menuList.addEventListener('click',handlerForNavigationItemClicked);
+menuList.addEventListener('click', navigationItemClickedHandler);
 
 // Set sections as active
-document.addEventListener("scroll",scrollWindowHandler);
+document.addEventListener("scroll", scrollWindowHandler);
