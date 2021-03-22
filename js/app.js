@@ -17,7 +17,7 @@
 const sections = document.querySelectorAll("section");
 const menuList = document.querySelector("#navbar__list");
 let navigationItems;
-let activeSection = sections[0];
+let activeSection;
 let activeNavigationItem;
 
 
@@ -66,8 +66,9 @@ function getActiveSection(){
 
 function scrollWindowHandler(){
     const newActiveSection = getActiveSection();
-    if(newActiveSection !== activeSection){
-        activeSection.classList.remove("your-active-class");
+    if(newActiveSection && newActiveSection !== activeSection){
+        if(activeSection)
+            activeSection.classList.remove("your-active-class");
         newActiveSection.classList.add("your-active-class");
         activeSection = newActiveSection;
         updateActiveNavigationItem(activeSection)
@@ -91,9 +92,6 @@ addNavigationMenuItems();
 
 // select all navigation items after built
 navigationItems = document.querySelectorAll(".menu__link");
-
-// mark active item
-updateActiveNavigationItem(activeSection);
 
 // Scroll to section on link click
 menuList.addEventListener('click',handlerForNavigationItemClicked);
